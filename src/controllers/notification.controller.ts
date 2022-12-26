@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { PrismaService } from 'src/services/prisma.service';
 import { Notification } from '@prisma/client';
+import { CreateNotificationDto } from '../DTOs/create-notification.dto';
 
 @Controller('notifications')
 export class NotificationController {
@@ -11,15 +12,17 @@ export class NotificationController {
     return this.prismaService.notification.findMany();
   }
 
-  @Post('/create')
+  @Post()
   async createNotification(
-    @Body() createNotificationDto: any,
+    @Body() createNotificationDto: CreateNotificationDto,
   ): Promise<Notification> {
+    const { content, category, recipientId } = createNotificationDto;
+
     return this.prismaService.notification.create({
       data: {
-        content: createNotificationDto.content,
-        category: createNotificationDto.category,
-        recipientId: createNotificationDto.recipientId,
+        content,
+        category,
+        recipientId,
       },
     });
   }
