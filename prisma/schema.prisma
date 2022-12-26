@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Notification {
-  id          String    @id @default(cuid())
+  id          String    @id @default(uuid())
   content     String
   category    String
   readAt      DateTime?
@@ -21,4 +21,16 @@ model Notification {
   updatedAt DateTime @updatedAt
 
   @@index([recipientId], name: "recipientId")
+}
+
+model File {
+  id           String   @id @default(uuid())
+  originalName String
+  encoding     String
+  mimeType     String
+  buffer       Bytes
+  size         Int
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
