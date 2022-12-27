@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { PrismaService } from 'src/services/prisma.service';
 import { Notification } from '@prisma/client';
 import { CreateNotificationDto } from '../DTOs/create-notification.dto';
+import { PrismaService } from '../services/prisma.service';
 
 @Controller('notifications')
 export class NotificationController {

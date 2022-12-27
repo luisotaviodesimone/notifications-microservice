@@ -8,8 +8,8 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { File } from '@prisma/client';
-import { decodeUTF8 } from 'src/helpers/encoding.helper';
-import { PrismaService } from 'src/services/prisma.service';
+import { decodeUTF8 } from '../helpers/encoding.helper';
+import { PrismaService } from '../services/prisma.service';
 
 @Controller('file')
 export class FileUploadController {
@@ -33,6 +33,12 @@ export class FileUploadController {
 
   @Get(':id')
   async getFile(@Param() { id }): Promise<File> {
-    return await this.prismaService.file.findFirst({ where: { id } });
+    const file = await this.prismaService.file.findFirst({ where: { id } });
+
+    if (!file) {
+      throw new Error('File not found');
+    }
+
+    return file;
   }
 }

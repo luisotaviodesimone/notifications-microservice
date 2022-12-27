@@ -11,4 +11,10 @@ export class CreateNotificationDto {
   @IsNotEmpty()
   @IsUUID()
   recipientId: string;
+
+  constructor(content: string, category: string, recipientId: string) {
+    this.content = content;
+    this.category = category;
+    this.recipientId = recipientId;
+  }
 }
