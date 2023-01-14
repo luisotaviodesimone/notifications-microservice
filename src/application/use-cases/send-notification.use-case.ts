@@ -23,6 +23,8 @@ export class SendNotificationUseCase {
       category,
     });
 
+    // Persistir a notificação no banco de dados
+
     return { notification };
   }
 }
