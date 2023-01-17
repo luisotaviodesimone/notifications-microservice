@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { NotificationController } from '../../src/controllers/notification.controller';
-import { PrismaService } from '../../src/services/prisma.service';
+import { NotificationController } from '../../../../src/infra/http/controllers/notification.controller';
+import { PrismaService } from '../../../../src/infra/database/prisma/prisma.service';
 
 describe('NotificationController', () => {
   let controller: NotificationController;

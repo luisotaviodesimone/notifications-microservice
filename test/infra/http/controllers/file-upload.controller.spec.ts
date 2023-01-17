@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { FileUploadController } from '../../src/controllers/file-upload.controller';
-import { PrismaService } from '../../src/services/prisma.service';
+import { FileUploadController } from '../../../../src/infra/http/controllers/file-upload.controller';
+import { PrismaService } from '../../../../src/infra/database/prisma/prisma.service';
 
 describe('FileUploadController', () => {
   let controller: FileUploadController;
