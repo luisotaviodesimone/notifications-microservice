@@ -1,15 +1,12 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Notification } from '@prisma/client';
+import { Notification } from '../../../application/entities/notification.entity';
 import { CreateNotificationDto } from '../DTOs/create-notification.dto';
-import { PrismaService } from '../services/prisma.service';
 
 @Controller('notifications')
 export class NotificationController {
-  constructor(private prismaService: PrismaService) {}
-
   @Get()
   async getNotifications(): Promise<Notification[]> {
-    return this.prismaService.notification.findMany();
+    throw new Error('Method not implemented.');
   }
 
   @Post()
@@ -17,13 +14,6 @@ export class NotificationController {
     @Body() createNotificationDto: CreateNotificationDto,
   ): Promise<Notification> {
     const { content, category, recipientId } = createNotificationDto;
-
-    return this.prismaService.notification.create({
-      data: {
-        content,
-        category,
-        recipientId,
-      },
-    });
+    throw new Error('Method not implemented.');
   }
 }
