@@ -1,19 +1,22 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Notification } from '../../../application/entities/notification.entity';
+import { Body, Controller, Post } from '@nestjs/common';
+import { SendNotification } from '../../../application/use-cases/send-notification.use-case';
 import { CreateNotificationDto } from '../DTOs/create-notification.dto';
 
 @Controller('notifications')
 export class NotificationController {
-  @Get()
-  async getNotifications(): Promise<Notification[]> {
-    throw new Error('Method not implemented.');
-  }
+  constructor(private sendNotification: SendNotification) {}
 
   @Post()
   async createNotification(
     @Body() createNotificationDto: CreateNotificationDto,
-  ): Promise<Notification> {
+  ) {
     const { content, category, recipientId } = createNotificationDto;
-    throw new Error('Method not implemented.');
+    const { notification } = await this.sendNotification.execute({
+      recipientId,
+      content,
+      category,
+    });
+
+    return { notification };
   }
 }

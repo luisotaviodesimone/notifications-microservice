@@ -1,13 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { NotificationsRepository } from '../../../../src/application/repositories/notifications.repository';
+import { SendNotification } from '../../../../src/application/use-cases/send-notification.use-case';
 import { NotificationController } from '../../../../src/infra/http/controllers/notification.controller';
-import { PrismaService } from '../../../../src/infra/database/prisma/prisma.service';
+import { InMemoryNotificationsRepository } from '../../../application/repositories/in-memory-notifications.repository';
 
 describe('NotificationController', () => {
   let controller: NotificationController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PrismaService],
+      providers: [
+        SendNotification,
+        {
+          provide: NotificationsRepository,
+          useClass: InMemoryNotificationsRepository,
+        },
+      ],
       controllers: [NotificationController],
     }).compile();
 
