@@ -1,5 +1,5 @@
-import { Content } from '../../../src/application/entities/content.entity';
-import { Notification } from '../../../src/application/entities/notification.entity';
+import { Content } from '@application/entities/content.entity';
+import { Notification } from '@application/entities/notification.entity';
 
 describe('Notification', () => {
   describe('constructor', () => {

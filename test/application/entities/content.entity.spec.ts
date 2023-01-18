@@ -1,4 +1,4 @@
-import { Content } from '../../../src/application/entities/content.entity';
+import { Content } from '@application/entities/content.entity';
 
 describe('Content', () => {
   describe('constructor', () => {

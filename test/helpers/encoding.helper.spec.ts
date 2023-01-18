@@ -1,4 +1,4 @@
-import { encodeUTF8, decodeUTF8 } from '../../src/helpers/encoding.helper';
+import { encodeUTF8, decodeUTF8 } from '@helpers/encoding.helper';
 
 describe('EncodingHelper', () => {
   describe('encodeUTF8', () => {

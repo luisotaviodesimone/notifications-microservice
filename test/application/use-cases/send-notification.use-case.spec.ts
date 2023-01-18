@@ -1,6 +1,6 @@
+import { NotificationsRepository } from '@application/repositories/notifications.repository';
+import { SendNotification } from '@application/use-cases/send-notification.use-case';
 import { TestingModule, Test } from '@nestjs/testing';
-import { NotificationsRepository } from '../../../src/application/repositories/notifications.repository';
-import { SendNotification } from '../../../src/application/use-cases/send-notification.use-case';
 import { InMemoryNotificationsRepository } from '../repositories/in-memory-notifications.repository';
 
 describe('SendNotificationUseCase', () => {

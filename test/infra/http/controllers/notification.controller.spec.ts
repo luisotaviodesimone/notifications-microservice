@@ -1,8 +1,8 @@
+import { NotificationsRepository } from '@application/repositories/notifications.repository';
+import { SendNotification } from '@application/use-cases/send-notification.use-case';
+import { NotificationController } from '@infra/http/controllers/notification.controller';
 import { Test, TestingModule } from '@nestjs/testing';
-import { NotificationsRepository } from '../../../../src/application/repositories/notifications.repository';
-import { SendNotification } from '../../../../src/application/use-cases/send-notification.use-case';
-import { NotificationController } from '../../../../src/infra/http/controllers/notification.controller';
-import { InMemoryNotificationsRepository } from '../../../application/repositories/in-memory-notifications.repository';
+import { InMemoryNotificationsRepository } from '@test/application/repositories/in-memory-notifications.repository';
 
 describe('NotificationController', () => {
   let controller: NotificationController;

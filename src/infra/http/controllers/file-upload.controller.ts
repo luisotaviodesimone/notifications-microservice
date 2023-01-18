@@ -1,3 +1,5 @@
+import { decodeUTF8 } from '@helpers/encoding.helper';
+import { PrismaService } from '@infra/database/prisma/prisma.service';
 import {
   Controller,
   Get,
@@ -8,8 +10,6 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { File } from '@prisma/client';
-import { decodeUTF8 } from '../../../helpers/encoding.helper';
-import { PrismaService } from '../../database/prisma/prisma.service';
 
 @Controller('file')
 export class FileUploadController {
