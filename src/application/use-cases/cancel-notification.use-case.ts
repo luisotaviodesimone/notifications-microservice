@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { NotificationsRepository } from '../repositories/notifications.repository';
+import UseCaseError from './errors';
 
 interface CancelNotificationRequest {
   notificationId: string;
@@ -21,7 +22,11 @@ export class CancelNotification {
     );
 
     if (!notification) {
-      throw new Error('Notification not found');
+      throw UseCaseError.notificationNotFound();
     }
+
+    notification.cancel();
+
+    await this.notificationRepository.save(notification);
   }
 }
