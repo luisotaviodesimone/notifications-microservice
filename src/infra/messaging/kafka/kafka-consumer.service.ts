@@ -6,7 +6,22 @@ export class KafkaConsumerService
   extends ServerKafka
   implements OnModuleDestroy
 {
-  onModuleDestroy() {
-    throw new Error('Method not implemented.');
+  constructor() {
+    super({
+      client: {
+        clientId: 'notifications-microservice',
+        brokers: [process.env.UPSTASH_KAFKA_BROKER || ''],
+        sasl: {
+          mechanism: 'scram-sha-256',
+          username: process.env.UPSTASH_KAFKA_USERNAME || '',
+          password: process.env.UPSTASH_KAFKA_PASSWORD || '',
+        },
+        ssl: true,
+      },
+    });
+  }
+
+  async onModuleDestroy() {
+    await this.close();
   }
 }
