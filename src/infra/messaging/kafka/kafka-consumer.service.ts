@@ -10,11 +10,11 @@ export class KafkaConsumerService
     super({
       client: {
         clientId: 'notifications-microservice',
-        brokers: [process.env.UPSTASH_KAFKA_BROKER || ''],
+        brokers: [process.env.KAFKA_BROKER || ''],
         sasl: {
           mechanism: 'scram-sha-256',
-          username: process.env.UPSTASH_KAFKA_USERNAME || '',
-          password: process.env.UPSTASH_KAFKA_PASSWORD || '',
+          username: process.env.KAFKA_USERNAME || '',
+          password: process.env.KAFKA_PASSWORD || '',
         },
         ssl: true,
       },
